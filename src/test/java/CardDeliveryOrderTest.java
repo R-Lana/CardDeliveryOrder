@@ -24,7 +24,7 @@ public class CardDeliveryOrderTest {
         $("[data-test-id='date'] input").sendKeys(Keys.DELETE);
 //        $("[data-test-id='date'] input").setValue(date.plusDays(5).format(DateTimeFormatter.ofPattern("dd MM yyyy")));
         $("[data-test-id='date'] input").setValue(date);
-        $("[data-test-id='name'] input").setValue("Земфира-Лукреция");
+        $("[data-test-id='name'] input").setValue("Карабасова Земфира-Лукреция");
         $("[data-test-id='phone'] input").setValue("+79111111111");
         $("[data-test-id=agreement]").click();
         $$("button").find(Condition.exactText("Забронировать")).click();
