@@ -19,7 +19,7 @@ public class CardDeliveryOrderTest {
 
         String date = LocalDate.now().plusDays(5).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         open("http://localhost:9999");
-        $("[data-test-id='city'] input").setValue("Стерлитамак");
+        $("[data-test-id='city'] input").setValue("Уфа");
         $("[data-test-id='date'] input").doubleClick();
         $("[data-test-id='date'] input").sendKeys(Keys.DELETE);
 //        $("[data-test-id='date'] input").setValue(date.plusDays(5).format(DateTimeFormatter.ofPattern("dd MM yyyy")));
