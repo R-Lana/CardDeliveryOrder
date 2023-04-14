@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
@@ -10,26 +11,26 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class CardDeliveryOrderTest {
+    @BeforeEach
+    public void setup () {
+        open("http://localhost:9999");
+    }
+    public String generateDate(String pattern) {
+        return LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+    }
     @Test
     void shouldSendForm() {
-
-        Configuration.headless = true;
-        Configuration.holdBrowserOpen = true;
-//        LocalDate date = LocalDate.now();
-
-        String date = LocalDate.now().plusDays(5).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        open("http://localhost:9999");
+        $ (LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
         $("[data-test-id='city'] input").setValue("Уфа");
         $("[data-test-id='date'] input").doubleClick();
         $("[data-test-id='date'] input").sendKeys(Keys.DELETE);
-//        $("[data-test-id='date'] input").setValue(date.plusDays(5).format(DateTimeFormatter.ofPattern("dd MM yyyy")));
+        String date = generateDate( "dd.MM.yyyy");
         $("[data-test-id='date'] input").setValue(date);
-        $("[data-test-id='name'] input").setValue("Земфира-Лукреция");
+        $("[data-test-id='name'] input").setValue("Карабасова Земфира-Лукреция");
         $("[data-test-id='phone'] input").setValue("+79111111111");
         $("[data-test-id=agreement]").click();
         $$("button").find(Condition.exactText("Забронировать")).click();
         $("[data-test-id='notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
-//        $(".notification__content").shouldHave(Condition.ownText(date.plusDays(5).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))));
         $(".notification__content").shouldHave(Condition.ownText(date));
     }
 }
