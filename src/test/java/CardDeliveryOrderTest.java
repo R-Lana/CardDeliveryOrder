@@ -14,14 +14,14 @@ public class CardDeliveryOrderTest {
     @BeforeEach
     public void setup () {
         open("http://localhost:9999");
+        Configuration.headless = true;
+        Configuration.holdBrowserOpen = true;
     }
     public String generateDate(String pattern) {
         return LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
     @Test
     void shouldSendForm() {
-        Configuration.headless = true;
-        Configuration.holdBrowserOpen = true;
         $ (LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
         $("[data-test-id='city'] input").setValue("Уфа");
         $("[data-test-id='date'] input").doubleClick();
