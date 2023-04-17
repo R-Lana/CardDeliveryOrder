@@ -20,6 +20,8 @@ public class CardDeliveryOrderTest {
     }
     @Test
     void shouldSendForm() {
+        Configuration.headless = true;
+        Configuration.holdBrowserOpen = true;
         $ (LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
         $("[data-test-id='city'] input").setValue("Уфа");
         $("[data-test-id='date'] input").doubleClick();
