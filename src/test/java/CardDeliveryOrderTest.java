@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 public class CardDeliveryOrderTest {
     @BeforeEach
     public void setup () {
+        Configuration.headless = true;
         Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");  
     }
