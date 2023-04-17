@@ -1,1 +1,1 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/h83iqc6d01i9sqhr/branch/main?svg=true)](https://ci.appveyor.com/project/R-Lana/carddeliveryorder/branch/main)
+https://ci.appveyor.com/api/github/webhook?id=l03p4084t5q4dxt0
