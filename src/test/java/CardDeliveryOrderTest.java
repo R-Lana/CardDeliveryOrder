@@ -16,8 +16,8 @@ public class CardDeliveryOrderTest {
         Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");  
     }
-    public String generateDate(String pattern) {
-        return LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+    public String generateDate(long days, String pattern) {
+        return LocalDate.now().plusDays (days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
     @Test
     void shouldSendForm() {
@@ -25,7 +25,7 @@ public class CardDeliveryOrderTest {
         $("[data-test-id='city'] input").setValue("Уфа");
         $("[data-test-id='date'] input").doubleClick();
         $("[data-test-id='date'] input").sendKeys(Keys.DELETE);
-        String date = generateDate( "dd.MM.yyyy");
+        String date = generateDate( 3,"dd.MM.yyyy");
         $("[data-test-id='date'] input").setValue(date);
         $("[data-test-id='name'] input").setValue("Карабасова Земфира-Лукреция");
         $("[data-test-id='phone'] input").setValue("+79111111111");
